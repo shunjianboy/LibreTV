@@ -529,8 +529,10 @@ function renderDoubanCards(data, container) {
                 .replace(/>/g, '&gt;');
             
             // 处理图片URL
-            // 1. 直接使用豆瓣图片URL (添加no-referrer属性)
-            const originalCoverUrl = item.cover;
+            // 1. 将豆瓣图片域名替换为国内代理域名
+            let originalCoverUrl = item.cover;
+            // 替换豆瓣域名为国内代理域名
+            originalCoverUrl = originalCoverUrl.replace(/img\d+\.doubanio\.com/g, 'img.doubanio.cmliussss.net');
             
             // 2. 也准备代理URL作为备选
             const proxiedCoverUrl = PROXY_URL + encodeURIComponent(originalCoverUrl);
